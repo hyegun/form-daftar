@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Form Pendaftaran</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6fb;
+        padding: 16px;
+        min-height: 100vh;
+      }
+      .card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        padding: 24px 20px;
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      h2 {
+        text-align: center;
+        color: #4f46e5;
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        color: #666;
+        margin: 14px 0 5px;
+        font-weight: 700;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 16px;
+        background: #fff;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+      select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        padding-right: 36px;
+      }
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      }
+      input[readonly] {
+        background: #f9f9f9;
+        color: #555;
+      }
+      .note {
+        font-size: 11px;
+        color: #aaa;
+        margin-top: 4px;
+      }
+      .btn-submit {
+        width: 100%;
+        margin-top: 24px;
+        padding: 14px;
+        background: #4f46e5;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .btn-submit:disabled {
+        background: #aaa;
+      }
+      #status {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 13px;
+        color: #888;
+      }
+      #tiket {
+        display: none;
+      }
+      .tiket-header {
+        background: #4f46e5;
+        color: #fff;
+        border-radius: 12px 12px 0 0;
+        padding: 20px;
+        text-align: center;
+      }
+      .tiket-header h3 {
+        font-size: 18px;
+      }
+      .tiket-header p {
+        font-size: 12px;
+        opacity: 0.8;
+        margin-top: 4px;
+      }
+      .tiket-body {
+        padding: 20px 16px;
+      }
+      .no-urut {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 700;
+        color: #4f46e5;
+        letter-spacing: 2px;
+      }
+      .qr-wrap {
+        text-align: center;
+        margin: 12px 0 20px;
+      }
+      .qr-wrap img {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 6px;
+        width: min(200px, 60vw);
+      }
+      .qr-wrap p {
+        font-size: 11px;
+        color: #aaa;
+        margin-top: 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      tr {
+        display: flex;
+        border-bottom: 1px solid #f0f0f0;
+      }
+      td {
+        padding: 10px 4px;
+        word-break: break-word;
+      }
+      td:first-child {
+        color: #888;
+        width: 44%;
+        flex-shrink: 0;
+      }
+      td:last-child {
+        font-weight: 600;
+        flex: 1;
+      }
+      .tiket-footer {
+        background: #f9f9f9;
+        border-radius: 0 0 12px 12px;
+        padding: 14px;
+        text-align: center;
+        font-size: 11px;
+        color: #bbb;
+      }
+      .btn-print {
+        display: block;
+        width: calc(100% - 32px);
+        margin: 16px 16px 0;
+        padding: 12px;
+        background: #fff;
+        color: #4f46e5;
+        border: 2px solid #4f46e5;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        text-align: center;
+      }
+      .btn-ulang {
+        display: block;
+        width: calc(100% - 32px);
+        margin: 10px 16px 20px;
+        padding: 12px;
+        background: #fff;
+        color: #888;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 13px;
+        cursor: pointer;
+        text-align: center;
+      }
+      @media print {
+        .btn-print,
+        .btn-ulang {
+          display: none;
+        }
+        .card {
+          box-shadow: none;
+        }
+        body {
+          background: #fff;
+          padding: 0;
+        }
+      }
+      @media (min-width: 480px) {
+        body {
+          padding: 32px 16px;
+        }
+        .card {
+          padding: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <!-- FORM -->
+      <div id="form-section">
+        <h2>📋 Form Pendaftaran</h2>
+
+        <label>Nama Lengkap</label>
+        <input
+          type="text"
+          id="nama"
+          placeholder="Masukkan nama lengkap"
+          autocomplete="name"
+        />
+
+        <label>Jenis Kelamin</label>
+        <select id="jenisKelamin">
+          <option value="">-- Pilih --</option>
+          <option value="Laki-laki">Laki-laki</option>
+          <option value="Perempuan">Perempuan</option>
+        </select>
+
+        <label>No KTP</label>
+        <input
+          type="text"
+          id="noKTP"
+          placeholder="16 digit No KTP"
+          maxlength="16"
+          inputmode="numeric"
+        />
+        <div class="note">16 digit angka tanpa spasi</div>
+
+        <label>Tanggal Lahir</label>
+        <input type="date" id="tglLahir" onchange="hitungUsia()" />
+
+        <label>Usia</label>
+        <input
+          type="number"
+          id="usia"
+          placeholder="Otomatis dari tanggal lahir"
+          readonly
+        />
+        <div class="note">Terisi otomatis saat tanggal lahir dipilih</div>
+
+        <label>No Telp</label>
+        <input
+          type="tel"
+          id="noTelp"
+          placeholder="Contoh: 08123456789"
+          inputmode="tel"
+        />
+
+        <button class="btn-submit" id="btnSubmit" onclick="kirimForm()">
+          Daftar Sekarang
+        </button>
+        <div id="status"></div>
+      </div>
+
+      <!-- TIKET -->
+      <div id="tiket">
+        <div class="tiket-header">
+          <h3>🎫 Tiket Pendaftaran</h3>
+          <p>Tunjukkan QR Code ini saat check-in</p>
+        </div>
+        <div class="tiket-body">
+          <div class="no-urut" id="t-noUrut"></div>
+          <div class="qr-wrap">
+            <img id="t-qr" src="" alt="QR Code" />
+            <p>Scan QR Code untuk verifikasi</p>
+          </div>
+          <table>
+            <tr>
+              <td>Nama</td>
+              <td id="t-nama"></td>
+            </tr>
+            <tr>
+              <td>Jenis Kelamin</td>
+              <td id="t-jenisKelamin"></td>
+            </tr>
+            <tr>
+              <td>No KTP</td>
+              <td id="t-noKTP"></td>
+            </tr>
+            <tr>
+              <td>Tgl Lahir</td>
+              <td id="t-tglLahir"></td>
+            </tr>
+            <tr>
+              <td>Usia</td>
+              <td id="t-usia"></td>
+            </tr>
+            <tr>
+              <td>No Telp</td>
+              <td id="t-noTelp"></td>
+            </tr>
+            <tr>
+              <td>Tgl Daftar</td>
+              <td id="t-tglDaftar"></td>
+            </tr>
+          </table>
+        </div>
+        <button class="btn-print" onclick="window.print()">
+          🖨️ Print / Simpan PDF
+        </button>
+        <button class="btn-ulang" onclick="daftarLagi()">← Daftar Lagi</button>
+        <div class="tiket-footer">Tiket dibuat otomatis oleh sistem</div>
+      </div>
+    </div>
+    <script>
+      // ⚠️ GANTI DENGAN URL DEPLOYMENT APPS SCRIPT KAMU
+      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/XXXXXXX/exec";
+
+      function hitungUsia() {
+        const tglLahir = document.getElementById("tglLahir").value;
+        if (!tglLahir) return;
+        const today = new Date(),
+          lahir = new Date(tglLahir);
+        let usia = today.getFullYear() - lahir.getFullYear();
+        const sudah =
+          today.getMonth() > lahir.getMonth() ||
+          (today.getMonth() === lahir.getMonth() &&
+            today.getDate() >= lahir.getDate());
+        if (!sudah) usia--;
+        document.getElementById("usia").value = usia;
+      }
+
+      function kirimForm() {
+        const nama = document.getElementById("nama").value.trim();
+        const jenisKelamin = document.getElementById("jenisKelamin").value;
+        const noKTP = document.getElementById("noKTP").value.trim();
+        const tglLahir = document.getElementById("tglLahir").value;
+        const usia = parseInt(document.getElementById("usia").value);
+        const noTelp = document.getElementById("noTelp").value.trim();
+
+        if (!nama || !jenisKelamin || !noKTP || !tglLahir || !usia || !noTelp) {
+          alert("Semua field wajib diisi!");
+          return;
+        }
+        if (!/^\d{16}$/.test(noKTP)) {
+          alert("No KTP harus 16 digit angka!");
+          return;
+        }
+        if (new Date(tglLahir) > new Date()) {
+          alert("Tanggal lahir tidak boleh di masa depan!");
+          return;
+        }
+        if (usia < 50) {
+          alert(
+            "Maaf, pendaftaran hanya untuk peserta berusia 50 tahun ke atas!",
+          );
+          return;
+        }
+
+        const btn = document.getElementById("btnSubmit");
+        btn.disabled = true;
+        document.getElementById("status").textContent =
+          "⏳ Sedang memproses...";
+
+        fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify({
+            nama,
+            jenisKelamin,
+            noKTP,
+            tglLahir,
+            usia,
+            noTelp,
+          }),
+        })
+          .then((r) => r.json())
+          .then((hasil) => {
+            if (hasil.status === "error") {
+              alert("Error: " + hasil.pesan);
+              btn.disabled = false;
+              document.getElementById("status").textContent = "";
+              return;
+            }
+            tampilTiket(hasil);
+          })
+          .catch((err) => {
+            alert("Gagal terhubung ke server: " + err.message);
+            btn.disabled = false;
+            document.getElementById("status").textContent = "";
+          });
+      }
+
+      function tampilTiket(t) {
+        document.getElementById("t-noUrut").textContent = "#" + t.noUrut;
+        document.getElementById("t-qr").src = t.qrURL;
+        document.getElementById("t-nama").textContent = t.nama;
+        document.getElementById("t-jenisKelamin").textContent = t.jenisKelamin;
+        document.getElementById("t-noKTP").textContent = t.noKTP;
+        document.getElementById("t-tglLahir").textContent = t.tglLahir;
+        document.getElementById("t-usia").textContent = t.usia + " tahun";
+        document.getElementById("t-noTelp").textContent = t.noTelp;
+        document.getElementById("t-tglDaftar").textContent = t.tglDaftar;
+        document.getElementById("form-section").style.display = "none";
+        document.getElementById("tiket").style.display = "block";
+        window.scrollTo(0, 0);
+      }
+
+      function daftarLagi() {
+        document.getElementById("form-section").style.display = "block";
+        document.getElementById("tiket").style.display = "none";
+        document.getElementById("btnSubmit").disabled = false;
+        document.getElementById("status").textContent = "";
+        document.querySelectorAll("input").forEach((i) => (i.value = ""));
+        document.getElementById("jenisKelamin").value = "";
+        window.scrollTo(0, 0);
+      }
+    </script>
+  </body>
+</html>
