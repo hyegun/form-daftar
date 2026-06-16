@@ -6,270 +6,795 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
-    <title>Form Pendaftaran</title>
+    <title>Form Pendaftaran - Cek Kesehatan Darah</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
-      body {
-        font-family: Arial, sans-serif;
-        background: #f4f6fb;
-        padding: 16px;
-        min-height: 100vh;
+
+      :root {
+        --navy: #0d2250;
+        --navy-mid: #1a3a6e;
+        --red: #c0392b;
+        --red-light: #e74c3c;
+        --gold: #f0c419;
+        --white: #ffffff;
+        --bg: #eef2fb;
+        --border: #d0d9ef;
+        --text: #1a2a4a;
+        --muted: #6b7a99;
+        --input-bg: #f7f9ff;
       }
-      .card {
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-        padding: 24px 20px;
+
+      body {
+        font-family: "Inter", Arial, sans-serif;
+        background: var(--bg);
+        min-height: 100vh;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* === HERO BANNER === */
+      .hero-banner {
+        width: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-mid) 60%,
+          #1e4d8c 100%
+        );
+        padding: 28px 20px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-banner::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .hero-banner::after {
+        content: "";
+        position: absolute;
+        bottom: -30px;
+        left: -30px;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .hero-eyebrow {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .hero-title {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.15;
+        margin-bottom: 4px;
+      }
+      .hero-title span {
+        color: var(--red-light);
+      }
+      .hero-sub {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 8px;
+      }
+      .hero-badges {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+      .badge {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 5px 12px;
+        font-size: 11px;
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .badge .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+        flex-shrink: 0;
+      }
+
+      /* === INFO STRIP === */
+      .info-strip {
         width: 100%;
         max-width: 480px;
-        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
       }
-      h2 {
-        text-align: center;
-        color: #4f46e5;
-        margin-bottom: 20px;
+      .info-item {
+        background: var(--red);
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .info-item:nth-child(2) {
+        background: #a93226;
+      }
+      .info-item:nth-child(3) {
+        background: var(--navy-mid);
+      }
+      .info-item:nth-child(4) {
+        background: var(--navy);
+      }
+      .info-icon {
+        font-size: 16px;
+      }
+      .info-text {
+        line-height: 1.2;
+      }
+      .info-label {
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.65);
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .info-value {
+        font-size: 12px;
+        color: var(--white);
+        font-weight: 700;
+      }
+
+      /* === CARD === */
+      .card {
+        background: var(--white);
+        width: 100%;
+        max-width: 480px;
+        padding: 28px 22px 32px;
+        box-shadow: 0 8px 32px rgba(13, 34, 80, 0.1);
+      }
+
+      /* === FORM SECTION === */
+      .form-heading {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid var(--bg);
+      }
+      .form-heading-icon {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 18px;
+        flex-shrink: 0;
       }
+      .form-heading-text h2 {
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--navy);
+        text-align: left;
+        margin: 0;
+      }
+      .form-heading-text p {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      /* age restriction notice */
+      .age-notice {
+        background: linear-gradient(135deg, #fff8e1, #fff3cd);
+        border: 1px solid #f0c419;
+        border-left: 4px solid var(--gold);
+        border-radius: 10px;
+        padding: 10px 14px;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .age-notice span {
+        font-size: 16px;
+      }
+      .age-notice p {
+        font-size: 11px;
+        color: #7a5c00;
+        line-height: 1.5;
+      }
+      .age-notice strong {
+        font-weight: 700;
+      }
+
       label {
         display: block;
-        font-size: 13px;
-        color: #666;
-        margin: 14px 0 5px;
+        font-size: 11px;
+        color: var(--muted);
+        margin: 18px 0 6px;
         font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .field-group {
+        position: relative;
+      }
+      .field-icon {
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+        pointer-events: none;
+        opacity: 0.45;
       }
       input,
       select {
         width: 100%;
-        padding: 12px 14px;
-        border: 1px solid #ddd;
+        padding: 12px 14px 12px 40px;
+        border: 1.5px solid var(--border);
         border-radius: 10px;
-        font-size: 16px;
-        background: #fff;
+        font-size: 15px;
+        font-family: "Inter", Arial, sans-serif;
+        background: var(--input-bg);
+        color: var(--text);
         -webkit-appearance: none;
         appearance: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
       }
       select {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: right 14px center;
+        background-color: var(--input-bg);
         padding-right: 36px;
       }
       input:focus,
       select:focus {
         outline: none;
-        border-color: #4f46e5;
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        border-color: var(--navy-mid);
+        box-shadow: 0 0 0 3px rgba(26, 58, 110, 0.1);
+        background: var(--white);
       }
       input[readonly] {
-        background: #f9f9f9;
-        color: #555;
+        background: #f0f4ff;
+        color: var(--navy);
+        font-weight: 600;
+        cursor: not-allowed;
       }
       .note {
-        font-size: 11px;
-        color: #aaa;
-        margin-top: 4px;
+        font-size: 10px;
+        color: var(--muted);
+        margin-top: 5px;
+        padding-left: 2px;
       }
+
+      /* divider */
+      .form-divider {
+        border: none;
+        border-top: 1.5px dashed var(--border);
+        margin: 22px 0 4px;
+      }
+      .form-divider-label {
+        font-size: 10px;
+        color: var(--muted);
+        text-align: center;
+        margin: -8px 0 0;
+        background: var(--white);
+        width: fit-content;
+        margin: -8px auto 0;
+        padding: 0 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
       .btn-submit {
         width: 100%;
-        margin-top: 24px;
-        padding: 14px;
-        background: #4f46e5;
-        color: #fff;
+        margin-top: 28px;
+        padding: 15px;
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-mid) 100%
+        );
+        color: var(--white);
         border: none;
-        border-radius: 10px;
-        font-size: 16px;
-        font-weight: 700;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 800;
         cursor: pointer;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 16px rgba(13, 34, 80, 0.25);
+        transition:
+          opacity 0.2s,
+          transform 0.1s;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-submit::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: 12px 12px 0 0;
+      }
+      .btn-submit:active {
+        transform: scale(0.98);
       }
       .btn-submit:disabled {
-        background: #aaa;
+        background: #b0bace;
+        box-shadow: none;
+        cursor: not-allowed;
       }
       #status {
         text-align: center;
         margin-top: 12px;
-        font-size: 13px;
-        color: #888;
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 500;
       }
+
+      /* === TIKET === */
       #tiket {
         display: none;
       }
+
       .tiket-header {
-        background: #4f46e5;
-        color: #fff;
-        border-radius: 12px 12px 0 0;
-        padding: 20px;
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-mid) 100%
+        );
+        border-radius: 14px 14px 0 0;
+        padding: 24px 20px 20px;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .tiket-header::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .tiket-logo {
+        font-size: 28px;
+        margin-bottom: 6px;
       }
       .tiket-header h3 {
-        font-size: 18px;
+        font-size: 17px;
+        font-weight: 800;
+        color: var(--white);
       }
       .tiket-header p {
-        font-size: 12px;
-        opacity: 0.8;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.65);
         margin-top: 4px;
       }
+      .tiket-header .event-date-strip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 5px 14px;
+        margin-top: 12px;
+        font-size: 11px;
+        color: var(--white);
+        font-weight: 600;
+      }
+
+      /* perforation line */
+      .tiket-perf {
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        position: relative;
+      }
+      .tiket-perf::before,
+      .tiket-perf::after {
+        content: "";
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--bg);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+      }
+      .tiket-perf::before {
+        left: -11px;
+      }
+      .tiket-perf::after {
+        right: -11px;
+      }
+      .tiket-perf-line {
+        flex: 1;
+        border-top: 2px dashed var(--border);
+        margin: 8px 0;
+      }
+
       .tiket-body {
-        padding: 20px 16px;
+        padding: 20px 18px;
+        background: var(--white);
+      }
+
+      .no-urut-wrap {
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      .no-urut-label {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--muted);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
       }
       .no-urut {
-        text-align: center;
-        font-size: 48px;
-        font-weight: 700;
-        color: #4f46e5;
-        letter-spacing: 2px;
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--navy);
+        letter-spacing: 3px;
+        line-height: 1;
       }
+      .no-urut-sub {
+        font-size: 10px;
+        color: var(--red);
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+
       .qr-wrap {
         text-align: center;
-        margin: 12px 0 20px;
+        margin: 14px 0 20px;
+        padding: 16px;
+        background: var(--input-bg);
+        border-radius: 12px;
+        border: 1.5px solid var(--border);
       }
       .qr-wrap img {
-        border: 1px solid #eee;
-        border-radius: 10px;
-        padding: 6px;
-        width: min(200px, 60vw);
+        border-radius: 8px;
+        width: min(180px, 55vw);
       }
       .qr-wrap p {
-        font-size: 11px;
-        color: #aaa;
-        margin-top: 6px;
+        font-size: 10px;
+        color: var(--muted);
+        margin-top: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
       }
+
+      /* tiket table */
       table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 13px;
+        font-size: 12.5px;
       }
       tr {
         display: flex;
-        border-bottom: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f4ff;
+      }
+      tr:last-child {
+        border-bottom: none;
       }
       td {
-        padding: 10px 4px;
+        padding: 9px 4px;
         word-break: break-word;
       }
       td:first-child {
-        color: #888;
-        width: 44%;
+        color: var(--muted);
+        width: 42%;
         flex-shrink: 0;
+        font-weight: 500;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
       }
       td:last-child {
-        font-weight: 600;
+        font-weight: 700;
+        color: var(--navy);
         flex: 1;
       }
+
       .tiket-footer {
-        background: #f9f9f9;
-        border-radius: 0 0 12px 12px;
-        padding: 14px;
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-mid) 100%
+        );
+        border-radius: 0 0 14px 14px;
+        padding: 14px 16px;
         text-align: center;
-        font-size: 11px;
-        color: #bbb;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.55);
+        font-weight: 600;
+        letter-spacing: 0.5px;
       }
+      .tiket-footer span {
+        color: var(--gold);
+      }
+
       .btn-print {
         display: block;
         width: calc(100% - 32px);
-        margin: 16px 16px 0;
-        padding: 12px;
-        background: #fff;
-        color: #4f46e5;
-        border: 2px solid #4f46e5;
-        border-radius: 10px;
+        margin: 18px 16px 8px;
+        padding: 13px;
+        background: var(--white);
+        color: var(--navy);
+        border: 2px solid var(--navy);
+        border-radius: 12px;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 800;
         cursor: pointer;
         text-align: center;
+        transition:
+          background 0.2s,
+          color 0.2s;
+        font-family: "Inter", Arial, sans-serif;
       }
+      .btn-print:hover {
+        background: var(--navy);
+        color: var(--white);
+      }
+
       .btn-ulang {
         display: block;
         width: calc(100% - 32px);
-        margin: 10px 16px 20px;
+        margin: 0 16px 24px;
         padding: 12px;
-        background: #fff;
-        color: #888;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        font-size: 13px;
+        background: var(--white);
+        color: var(--muted);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        font-size: 12.5px;
         cursor: pointer;
         text-align: center;
+        font-family: "Inter", Arial, sans-serif;
+        font-weight: 600;
+        transition: border-color 0.2s;
       }
+      .btn-ulang:hover {
+        border-color: var(--muted);
+      }
+
+      /* === FOOTER === */
+      .page-footer {
+        width: 100%;
+        max-width: 480px;
+        text-align: center;
+        padding: 18px 16px 24px;
+        font-size: 10.5px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .page-footer strong {
+        color: var(--navy);
+      }
+
       @media print {
         .btn-print,
-        .btn-ulang {
-          display: none;
+        .btn-ulang,
+        .hero-banner,
+        .info-strip,
+        .page-footer {
+          display: none !important;
         }
         .card {
           box-shadow: none;
         }
         body {
           background: #fff;
-          padding: 0;
         }
       }
       @media (min-width: 480px) {
-        body {
-          padding: 32px 16px;
+        .hero-banner {
+          padding: 36px 24px 28px;
+        }
+        .hero-title {
+          font-size: 30px;
         }
         .card {
-          padding: 32px;
+          padding: 32px 28px 36px;
+          border-radius: 0;
         }
       }
     </style>
   </head>
   <body>
+    <!-- HERO BANNER -->
+    <div class="hero-banner" style="max-width: 480px; width: 100%">
+      <div class="hero-eyebrow">🏥 GBI Pasarkemis Rayon 3</div>
+      <div class="hero-title">Cek Kesehatan<br /><span>Darah Anda</span></div>
+      <div class="hero-sub">
+        Kenali kondisi tubuh sejak dini, hidup sehat, ibadah semakin berarti.
+      </div>
+      <div class="hero-badges">
+        <div class="badge">
+          <div class="dot"></div>
+          Kolesterol
+        </div>
+        <div class="badge">
+          <div class="dot"></div>
+          Asam Urat
+        </div>
+        <div class="badge">
+          <div class="dot"></div>
+          Gula Darah
+        </div>
+        <div class="badge">
+          <div class="dot"></div>
+          Tensi
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO STRIP -->
+    <div class="info-strip">
+      <div class="info-item">
+        <div class="info-icon">📅</div>
+        <div class="info-text">
+          <div class="info-label">Tanggal</div>
+          <div class="info-value">Minggu, 19 Juli 2026</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div class="info-text">
+          <div class="info-label">Waktu</div>
+          <div class="info-value">Pukul 13:00 WIB</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🙏</div>
+        <div class="info-text">
+          <div class="info-label">Sesi</div>
+          <div class="info-value">Setelah Ibadah Raya Ke 3</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <div class="info-label">Lokasi</div>
+          <div class="info-value">GBI Pasarkemis Rayon 3</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CARD -->
     <div class="card">
-      <!-- FORM -->
+      <!-- FORM SECTION -->
       <div id="form-section">
-        <h2>📋 Form Pendaftaran</h2>
+        <div class="form-heading">
+          <div class="form-heading-icon">📋</div>
+          <div class="form-heading-text">
+            <h2>Form Pendaftaran</h2>
+            <p>Isi data diri dengan lengkap dan benar</p>
+          </div>
+        </div>
+
+        <div class="age-notice">
+          <span>⚠️</span>
+          <p>
+            Kegiatan ini
+            <strong>hanya untuk jemaat usia 50 tahun ke atas.</strong> Pastikan
+            data tanggal lahir Anda benar.
+          </p>
+        </div>
 
         <label>Nama Lengkap</label>
-        <input
-          type="text"
-          id="nama"
-          placeholder="Masukkan nama lengkap"
-          autocomplete="name"
-        />
+        <div class="field-group">
+          <span class="field-icon">👤</span>
+          <input
+            type="text"
+            id="nama"
+            placeholder="Masukkan nama lengkap"
+            autocomplete="name"
+          />
+        </div>
 
         <label>Jenis Kelamin</label>
-        <select id="jenisKelamin">
-          <option value="">-- Pilih --</option>
-          <option value="Laki-laki">Laki-laki</option>
-          <option value="Perempuan">Perempuan</option>
-        </select>
+        <div class="field-group">
+          <span class="field-icon">⚧</span>
+          <select id="jenisKelamin">
+            <option value="">-- Pilih Jenis Kelamin --</option>
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+
+        <hr class="form-divider" />
+        <div class="form-divider-label">Data Identitas</div>
 
         <label>No KTP</label>
-        <input
-          type="text"
-          id="noKTP"
-          placeholder="16 digit No KTP"
-          maxlength="16"
-          inputmode="numeric"
-        />
+        <div class="field-group">
+          <span class="field-icon">🪪</span>
+          <input
+            type="text"
+            id="noKTP"
+            placeholder="16 digit No KTP"
+            maxlength="16"
+            inputmode="numeric"
+          />
+        </div>
         <div class="note">16 digit angka tanpa spasi</div>
 
+        <hr class="form-divider" />
+        <div class="form-divider-label">Data Kelahiran & Kontak</div>
+
         <label>Tanggal Lahir</label>
-        <input type="date" id="tglLahir" onchange="hitungUsia()" />
+        <div class="field-group">
+          <span class="field-icon">🎂</span>
+          <input type="date" id="tglLahir" onchange="hitungUsia()" />
+        </div>
 
         <label>Usia</label>
-        <input
-          type="number"
-          id="usia"
-          placeholder="Otomatis dari tanggal lahir"
-          readonly
-        />
+        <div class="field-group">
+          <span class="field-icon">🔢</span>
+          <input
+            type="number"
+            id="usia"
+            placeholder="Otomatis dari tanggal lahir"
+            readonly
+          />
+        </div>
         <div class="note">Terisi otomatis saat tanggal lahir dipilih</div>
 
         <label>No Telp</label>
-        <input
-          type="tel"
-          id="noTelp"
-          placeholder="Contoh: 08123456789"
-          inputmode="tel"
-        />
+        <div class="field-group">
+          <span class="field-icon">📱</span>
+          <input
+            type="tel"
+            id="noTelp"
+            placeholder="Contoh: 08123456789"
+            inputmode="tel"
+          />
+        </div>
 
         <button class="btn-submit" id="btnSubmit" onclick="kirimForm()">
-          Daftar Sekarang
+          ✅ &nbsp;Daftar Sekarang
         </button>
         <div id="status"></div>
       </div>
@@ -277,15 +802,30 @@
       <!-- TIKET -->
       <div id="tiket">
         <div class="tiket-header">
-          <h3>🎫 Tiket Pendaftaran</h3>
+          <div class="tiket-logo">🎫</div>
+          <h3>Tiket Pendaftaran</h3>
           <p>Tunjukkan QR Code ini saat check-in</p>
+          <div class="event-date-strip">
+            📅 &nbsp;Minggu, 19 Juli 2026 · 13:00 WIB
+          </div>
         </div>
+
+        <div class="tiket-perf">
+          <div class="tiket-perf-line"></div>
+        </div>
+
         <div class="tiket-body">
-          <div class="no-urut" id="t-noUrut"></div>
+          <div class="no-urut-wrap">
+            <div class="no-urut-label">Nomor Urut</div>
+            <div class="no-urut" id="t-noUrut"></div>
+            <div class="no-urut-sub">Cek Kesehatan Darah 2026</div>
+          </div>
+
           <div class="qr-wrap">
             <img id="t-qr" src="" alt="QR Code" />
-            <p>Scan QR Code untuk verifikasi</p>
+            <p>📷 &nbsp;Scan QR Code untuk verifikasi</p>
           </div>
+
           <table>
             <tr>
               <td>Nama</td>
@@ -317,15 +857,30 @@
             </tr>
           </table>
         </div>
+
+        <div class="tiket-perf">
+          <div class="tiket-perf-line"></div>
+        </div>
+
+        <div class="tiket-footer">
+          Tiket dibuat otomatis oleh sistem &nbsp;·&nbsp;
+          <span>GBI Pasarkemis Rayon 3</span>
+        </div>
+
         <button class="btn-print" onclick="window.print()">
-          🖨️ Print / Simpan PDF
+          🖨️ &nbsp;Print / Simpan PDF
         </button>
         <button class="btn-ulang" onclick="daftarLagi()">← Daftar Lagi</button>
-        <div class="tiket-footer">Tiket dibuat otomatis oleh sistem</div>
       </div>
     </div>
+
+    <!-- PAGE FOOTER -->
+    <div class="page-footer">
+      <strong>Hubungi:</strong> 0813-2810-3054 (Ibu Hana)<br />
+      Sehatkan diri, kuatkan ibadah, bahagiakan keluarga. 🙏
+    </div>
+
     <script>
-      // ⚠️ GANTI DENGAN URL DEPLOYMENT APPS SCRIPT KAMU
       const APPS_SCRIPT_URL =
         "https://script.google.com/macros/s/AKfycbwgjFBKI9vC7Itml8LwZHbdIZivfw1HqT46Qc3qcG4BQE5PD4Xh0FwSLTqhdR7iCRkI/exec";
 
