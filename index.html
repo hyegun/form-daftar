@@ -867,8 +867,8 @@
           <span>GBI Pasarkemis Rayon 3</span>
         </div>
 
-        <button class="btn-print" onclick="window.print()">
-          🖨️ &nbsp;Print / Simpan PDF
+        <button class="btn-print" onclick="downloadTiketGambar()">
+          📥 &nbsp;Download Tiket
         </button>
         <button class="btn-ulang" onclick="daftarLagi()">← Daftar Lagi</button>
       </div>
@@ -981,6 +981,37 @@
         document.querySelectorAll("input").forEach((i) => (i.value = ""));
         document.getElementById("jenisKelamin").value = "";
         window.scrollTo(0, 0);
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+      function downloadTiketGambar() {
+        const tiketEl = document.getElementById('tiket');
+        const btn1 = tiketEl.querySelector('.btn-print');
+        const btn2 = tiketEl.querySelector('.btn-ulang');
+    
+        // Sembunyikan tombol sementara agar tidak ikut di gambar
+        btn1.style.display = 'none';
+        btn2.style.display = 'none';
+    
+        html2canvas(tiketEl, {
+          scale: 2,           // resolusi 2x agar gambar tajam
+          useCORS: true,      // izinkan gambar QR dari domain lain
+          backgroundColor: '#ffffff'
+        }).then(canvas => {
+          const link = document.createElement('a');
+          link.download = 'tiket-cek-kesehatan.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+    
+          // Tampilkan kembali tombol
+          btn1.style.display = '';
+          btn2.style.display = '';
+        }).catch(err => {
+          alert('Gagal membuat gambar: ' + err.message);
+          btn1.style.display = '';
+          btn2.style.display = '';
+        });
       }
     </script>
   </body>
