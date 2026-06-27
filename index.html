@@ -492,6 +492,8 @@
           <input type="tel" id="noTelp" placeholder="Contoh: 08123456789" inputmode="tel" />
         </div>
 
+
+
         <label>Ibadah *</label>
         <div class="ibadah-cards">
           <input type="radio" name="ibadah" id="ibadah2" value="2" />
@@ -782,6 +784,7 @@
               document.getElementById('loading-overlay').classList.remove('aktif');
               return;
             }
+            document.getElementById('loading-overlay').classList.remove('aktif');
             tampilTiket(hasil);
           })
           .catch(err => {
