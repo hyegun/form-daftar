@@ -2,65 +2,166 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
     <title>Form Pendaftaran - Cek Kesehatan Darah</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       :root {
-        --navy: #0d2250; --navy-mid: #1a3a6e; --red: #c0392b;
-        --red-light: #e74c3c; --gold: #f0c419; --white: #ffffff;
-        --bg: #eef2fb; --border: #d0d9ef; --text: #1a2a4a;
-        --muted: #6b7a99; --input-bg: #f7f9ff;
+        --navy: #0d2250;
+        --navy-mid: #1a3a6e;
+        --red: #c0392b;
+        --red-light: #e74c3c;
+        --gold: #f0c419;
+        --white: #ffffff;
+        --bg: #eef2fb;
+        --border: #d0d9ef;
+        --text: #1a2a4a;
+        --muted: #6b7a99;
+        --input-bg: #f7f9ff;
       }
       body {
         font-family: "Inter", Arial, sans-serif;
-        background: var(--bg); min-height: 100vh;
-        padding: 0; display: flex; flex-direction: column; align-items: center;
+        background: var(--bg);
+        min-height: 100vh;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       /* === HERO BANNER === */
       .hero-banner {
         width: 100%;
-        background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1e4d8c 100%);
-        padding: 28px 20px 24px; text-align: center;
-        position: relative; overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-mid) 60%,
+          #1e4d8c 100%
+        );
+        padding: 28px 20px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
       }
       .hero-banner::before {
-        content: ""; position: absolute; top: -40px; right: -40px;
-        width: 180px; height: 180px; border-radius: 50%;
-        background: rgba(255,255,255,0.04);
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
       }
       .hero-banner::after {
-        content: ""; position: absolute; bottom: -30px; left: -30px;
-        width: 130px; height: 130px; border-radius: 50%;
-        background: rgba(255,255,255,0.04);
+        content: "";
+        position: absolute;
+        bottom: -30px;
+        left: -30px;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
       }
-      .hero-title { font-size: 26px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 4px; }
-      .hero-title span { color: var(--red-light); }
-      .hero-sub { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 8px; }
-      .hero-badges { display: flex; justify-content: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+      .hero-title {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--white);
+        line-height: 1.15;
+        margin-bottom: 4px;
+      }
+      .hero-title span {
+        color: var(--red-light);
+      }
+      .hero-sub {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 8px;
+      }
+      .hero-badges {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
       .badge {
-        background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 20px; padding: 5px 12px; font-size: 11px; color: var(--white);
-        display: flex; align-items: center; gap: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 5px 12px;
+        font-size: 11px;
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        gap: 5px;
       }
-      .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+      .badge .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gold);
+        flex-shrink: 0;
+      }
 
       /* === INFO STRIP === */
-      .info-strip { width: 100%; max-width: 480px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-      .info-item { background: var(--red); padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
-      .info-item:nth-child(2) { background: #a93226; }
-      .info-item:nth-child(3) { background: var(--navy-mid); }
-      .info-item:nth-child(4) { background: var(--navy); }
-      .info-icon { font-size: 16px; }
-      .info-text { line-height: 1.2; }
-      .info-label { font-size: 9px; color: rgba(255,255,255,0.65); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-      .info-value { font-size: 12px; color: var(--white); font-weight: 700; }
+      .info-strip {
+        width: 100%;
+        max-width: 480px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+      .info-item {
+        background: var(--red);
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .info-item:nth-child(2) {
+        background: #a93226;
+      }
+      .info-item:nth-child(3) {
+        background: var(--navy-mid);
+      }
+      .info-item:nth-child(4) {
+        background: var(--navy);
+      }
+      .info-icon {
+        font-size: 16px;
+      }
+      .info-text {
+        line-height: 1.2;
+      }
+      .info-label {
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.65);
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .info-value {
+        font-size: 12px;
+        color: var(--white);
+        font-weight: 700;
+      }
 
       /* === COUNTDOWN / STATUS PANEL === */
       #time-panel {
-        width: 100%; max-width: 480px;
+        width: 100%;
+        max-width: 480px;
         display: none;
       }
       .countdown-box {
@@ -77,247 +178,656 @@
         background: linear-gradient(135deg, #7b241c, #a93226);
       }
       .countdown-eyebrow {
-        font-size: 10px; font-weight: 700; letter-spacing: 2px;
-        text-transform: uppercase; color: rgba(255,255,255,0.6);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
         margin-bottom: 6px;
       }
       .countdown-title {
-        font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 14px;
+        font-size: 15px;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 14px;
       }
       .countdown-digits {
-        display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 10px;
       }
       .digit-block {
-        background: rgba(255,255,255,0.12);
-        border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 10px; padding: 8px 10px; min-width: 58px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 8px 10px;
+        min-width: 58px;
       }
       .digit-num {
-        font-size: 30px; font-weight: 800; color: #fff;
-        line-height: 1; letter-spacing: 2px;
+        font-size: 30px;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1;
+        letter-spacing: 2px;
       }
       .digit-label {
-        font-size: 9px; color: rgba(255,255,255,0.6);
-        font-weight: 700; letter-spacing: 1.5px;
-        text-transform: uppercase; margin-top: 4px;
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.6);
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-top: 4px;
       }
       .countdown-note {
-        font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 4px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 4px;
       }
-      .countdown-note strong { color: var(--gold); }
+      .countdown-note strong {
+        color: var(--gold);
+      }
 
       /* sisa waktu saat open */
       .open-timer-bar {
-        display: flex; align-items: center; justify-content: center;
-        gap: 8px; margin-top: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 8px;
       }
       .open-timer-bar .pulse {
-        width: 8px; height: 8px; border-radius: 50%;
-        background: #2ecc71; animation: pulse 1.2s ease-in-out infinite;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #2ecc71;
+        animation: pulse 1.2s ease-in-out infinite;
         flex-shrink: 0;
       }
       @keyframes pulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.4; transform: scale(0.7); }
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.7);
+        }
       }
-      .open-timer-text { font-size: 12px; color: rgba(255,255,255,0.8); font-weight: 600; }
-      .closed-icon { font-size: 36px; margin-bottom: 8px; }
+      .open-timer-text {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 600;
+      }
+      .closed-icon {
+        font-size: 36px;
+        margin-bottom: 8px;
+      }
 
       /* === CARD === */
       .card {
-        background: var(--white); width: 100%; max-width: 480px;
+        background: var(--white);
+        width: 100%;
+        max-width: 480px;
         padding: 28px 22px 32px;
-        box-shadow: 0 8px 32px rgba(13,34,80,0.1);
+        box-shadow: 0 8px 32px rgba(13, 34, 80, 0.1);
       }
 
       /* === FORM === */
       .form-heading {
-        display: flex; align-items: center; gap: 10px;
-        margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--bg);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid var(--bg);
       }
       .form-heading-icon {
-        width: 38px; height: 38px;
+        width: 38px;
+        height: 38px;
         background: linear-gradient(135deg, var(--navy), var(--navy-mid));
-        border-radius: 10px; display: flex; align-items: center;
-        justify-content: center; font-size: 18px; flex-shrink: 0;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
       }
-      .form-heading-text h2 { font-size: 16px; font-weight: 800; color: var(--navy); text-align: left; margin: 0; }
-      .form-heading-text p { font-size: 11px; color: var(--muted); margin-top: 2px; }
+      .form-heading-text h2 {
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--navy);
+        text-align: left;
+        margin: 0;
+      }
+      .form-heading-text p {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
       .age-notice {
         background: linear-gradient(135deg, #fff8e1, #fff3cd);
-        border: 1px solid #f0c419; border-left: 4px solid var(--gold);
-        border-radius: 10px; padding: 10px 14px; margin-bottom: 22px;
-        display: flex; align-items: flex-start; gap: 8px;
+        border: 1px solid #f0c419;
+        border-left: 4px solid var(--gold);
+        border-radius: 10px;
+        padding: 10px 14px;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
       }
-      .age-notice span { font-size: 16px; }
-      .age-notice p { font-size: 11px; color: #7a5c00; line-height: 1.5; }
-      .age-notice strong { font-weight: 700; }
+      .age-notice span {
+        font-size: 16px;
+      }
+      .age-notice p {
+        font-size: 11px;
+        color: #7a5c00;
+        line-height: 1.5;
+      }
+      .age-notice strong {
+        font-weight: 700;
+      }
 
       label {
-        display: block; font-size: 11px; color: var(--muted);
-        margin: 18px 0 6px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+        display: block;
+        font-size: 11px;
+        color: var(--muted);
+        margin: 18px 0 6px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
       }
-      .field-group { position: relative; }
+      .field-group {
+        position: relative;
+      }
       .field-icon {
-        position: absolute; left: 13px; top: 50%;
-        transform: translateY(-50%); font-size: 15px;
-        pointer-events: none; opacity: 0.45;
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+        pointer-events: none;
+        opacity: 0.45;
       }
-      input, select {
-        width: 100%; padding: 12px 14px 12px 40px;
-        border: 1.5px solid var(--border); border-radius: 10px;
-        font-size: 15px; font-family: "Inter", Arial, sans-serif;
-        background: var(--input-bg); color: var(--text);
-        -webkit-appearance: none; appearance: none;
-        transition: border-color 0.2s, box-shadow 0.2s;
+      input,
+      select {
+        width: 100%;
+        padding: 12px 14px 12px 40px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        font-size: 15px;
+        font-family: "Inter", Arial, sans-serif;
+        background: var(--input-bg);
+        color: var(--text);
+        -webkit-appearance: none;
+        appearance: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
       }
       select {
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat; background-position: right 14px center;
-        background-color: var(--input-bg); padding-right: 36px;
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-color: var(--input-bg);
+        padding-right: 36px;
       }
-      input:focus, select:focus {
-        outline: none; border-color: var(--navy-mid);
-        box-shadow: 0 0 0 3px rgba(26,58,110,0.1); background: var(--white);
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--navy-mid);
+        box-shadow: 0 0 0 3px rgba(26, 58, 110, 0.1);
+        background: var(--white);
       }
       input[readonly] {
-        background: #f0f4ff; color: var(--navy);
-        font-weight: 600; cursor: not-allowed;
+        background: #f0f4ff;
+        color: var(--navy);
+        font-weight: 600;
+        cursor: not-allowed;
       }
-      .note { font-size: 10px; color: var(--muted); margin-top: 5px; padding-left: 2px; }
-      .form-divider { border: none; border-top: 1.5px dashed var(--border); margin: 22px 0 4px; }
+      .note {
+        font-size: 10px;
+        color: var(--muted);
+        margin-top: 5px;
+        padding-left: 2px;
+      }
+      .form-divider {
+        border: none;
+        border-top: 1.5px dashed var(--border);
+        margin: 22px 0 4px;
+      }
       .form-divider-label {
-        font-size: 10px; color: var(--muted); text-align: center;
-        background: var(--white); width: fit-content;
-        margin: -8px auto 0; padding: 0 10px;
-        font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+        font-size: 10px;
+        color: var(--muted);
+        text-align: center;
+        background: var(--white);
+        width: fit-content;
+        margin: -8px auto 0;
+        padding: 0 10px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
       }
       .btn-submit {
-        width: 100%; margin-top: 28px; padding: 15px;
-        background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-        color: var(--white); border: none; border-radius: 12px;
-        font-size: 15px; font-weight: 800; cursor: pointer;
+        width: 100%;
+        margin-top: 28px;
+        padding: 15px;
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-mid) 100%
+        );
+        color: var(--white);
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 800;
+        cursor: pointer;
         letter-spacing: 0.5px;
-        box-shadow: 0 4px 16px rgba(13,34,80,0.25);
-        transition: opacity 0.2s, transform 0.1s;
-        position: relative; overflow: hidden;
+        box-shadow: 0 4px 16px rgba(13, 34, 80, 0.25);
+        transition:
+          opacity 0.2s,
+          transform 0.1s;
+        position: relative;
+        overflow: hidden;
       }
       .btn-submit::after {
-        content: ""; position: absolute; top: 0; left: 0; right: 0;
-        height: 50%; background: rgba(255,255,255,0.07);
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: rgba(255, 255, 255, 0.07);
         border-radius: 12px 12px 0 0;
       }
-      .btn-submit:active { transform: scale(0.98); }
-      .btn-submit:disabled { background: #b0bace; box-shadow: none; cursor: not-allowed; }
-      #status { text-align: center; margin-top: 12px; font-size: 12px; color: var(--muted); font-weight: 500; }
+      .btn-submit:active {
+        transform: scale(0.98);
+      }
+      .btn-submit:disabled {
+        background: #b0bace;
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+      #status {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 500;
+      }
 
       /* form disabled overlay */
-      #form-section.form-locked { opacity: 0.4; pointer-events: none; user-select: none; }
+      #form-section.form-locked {
+        opacity: 0.4;
+        pointer-events: none;
+        user-select: none;
+      }
 
       /* === TIKET === */
-      #tiket { display: none; }
+      #tiket {
+        display: none;
+      }
       .tiket-header {
-        background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-        border-radius: 14px 14px 0 0; padding: 24px 20px 20px;
-        text-align: center; position: relative; overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-mid) 100%
+        );
+        border-radius: 14px 14px 0 0;
+        padding: 24px 20px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
       }
       .tiket-header::before {
-        content: ""; position: absolute; top: -20px; right: -20px;
-        width: 100px; height: 100px; border-radius: 50%;
-        background: rgba(255,255,255,0.06);
+        content: "";
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
       }
-      .tiket-logo { font-size: 28px; margin-bottom: 6px; }
-      .tiket-header h3 { font-size: 17px; font-weight: 800; color: var(--white); }
-      .tiket-header p { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 4px; }
+      .tiket-logo {
+        font-size: 28px;
+        margin-bottom: 6px;
+      }
+      .tiket-header h3 {
+        font-size: 17px;
+        font-weight: 800;
+        color: var(--white);
+      }
+      .tiket-header p {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 4px;
+      }
       .tiket-header .event-date-strip {
-        display: inline-flex; align-items: center; gap: 6px;
-        background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 20px; padding: 5px 14px; margin-top: 12px;
-        font-size: 11px; color: var(--white); font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 5px 14px;
+        margin-top: 12px;
+        font-size: 11px;
+        color: var(--white);
+        font-weight: 600;
       }
       .tiket-perf {
-        background: var(--bg); display: flex; align-items: center;
-        padding: 0 14px; position: relative;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        padding: 0 14px;
+        position: relative;
       }
-      .tiket-perf::before, .tiket-perf::after {
-        content: ""; width: 22px; height: 22px; border-radius: 50%;
-        background: var(--bg); position: absolute; top: 50%;
-        transform: translateY(-50%); z-index: 2;
+      .tiket-perf::before,
+      .tiket-perf::after {
+        content: "";
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--bg);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
       }
-      .tiket-perf::before { left: -11px; }
-      .tiket-perf::after { right: -11px; }
-      .tiket-perf-line { flex: 1; border-top: 2px dashed var(--border); margin: 8px 0; }
-      .tiket-body { padding: 20px 18px; background: var(--white); }
-      .no-urut-wrap { text-align: center; margin-bottom: 16px; }
-      .no-urut-label { font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-      .no-urut { font-size: 52px; font-weight: 800; color: var(--navy); letter-spacing: 3px; line-height: 1; }
-      .no-urut-sub { font-size: 10px; color: var(--red); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+      .tiket-perf::before {
+        left: -11px;
+      }
+      .tiket-perf::after {
+        right: -11px;
+      }
+      .tiket-perf-line {
+        flex: 1;
+        border-top: 2px dashed var(--border);
+        margin: 8px 0;
+      }
+      .tiket-body {
+        padding: 20px 18px;
+        background: var(--white);
+      }
+      .no-urut-wrap {
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      .no-urut-label {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--muted);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .no-urut {
+        font-size: 52px;
+        font-weight: 800;
+        color: var(--navy);
+        letter-spacing: 3px;
+        line-height: 1;
+      }
+      .no-urut-sub {
+        font-size: 10px;
+        color: var(--red);
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
       .qr-wrap {
-        text-align: center; margin: 14px 0 20px; padding: 16px;
-        background: var(--input-bg); border-radius: 12px; border: 1.5px solid var(--border);
+        text-align: center;
+        margin: 14px 0 20px;
+        padding: 16px;
+        background: var(--input-bg);
+        border-radius: 12px;
+        border: 1.5px solid var(--border);
       }
-      .qr-wrap img { border-radius: 8px; width: min(180px, 55vw); }
-      .qr-wrap p { font-size: 10px; color: var(--muted); margin-top: 8px; font-weight: 600; letter-spacing: 0.5px; }
-      table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-      tr { display: flex; border-bottom: 1px solid #f0f4ff; }
-      tr:last-child { border-bottom: none; }
-      td { padding: 9px 4px; word-break: break-word; }
-      td:first-child { color: var(--muted); width: 42%; flex-shrink: 0; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px; }
-      td:last-child { font-weight: 700; color: var(--navy); flex: 1; }
+      .qr-wrap img {
+        border-radius: 8px;
+        width: min(180px, 55vw);
+      }
+      .qr-wrap p {
+        font-size: 10px;
+        color: var(--muted);
+        margin-top: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12.5px;
+      }
+      tr {
+        display: flex;
+        border-bottom: 1px solid #f0f4ff;
+      }
+      tr:last-child {
+        border-bottom: none;
+      }
+      td {
+        padding: 9px 4px;
+        word-break: break-word;
+      }
+      td:first-child {
+        color: var(--muted);
+        width: 42%;
+        flex-shrink: 0;
+        font-weight: 500;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+      td:last-child {
+        font-weight: 700;
+        color: var(--navy);
+        flex: 1;
+      }
       .tiket-footer {
-        background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-        border-radius: 0 0 14px 14px; padding: 14px 16px;
-        text-align: center; font-size: 10px; color: rgba(255,255,255,0.55);
-        font-weight: 600; letter-spacing: 0.5px;
+        background: linear-gradient(
+          135deg,
+          var(--navy) 0%,
+          var(--navy-mid) 100%
+        );
+        border-radius: 0 0 14px 14px;
+        padding: 14px 16px;
+        text-align: center;
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.55);
+        font-weight: 600;
+        letter-spacing: 0.5px;
       }
-      .tiket-footer span { color: var(--gold); }
+      .tiket-footer span {
+        color: var(--gold);
+      }
       .btn-print {
-        display: block; width: calc(100% - 32px); margin: 18px 16px 8px; padding: 13px;
-        background: var(--white); color: var(--navy); border: 2px solid var(--navy);
-        border-radius: 12px; font-size: 14px; font-weight: 800; cursor: pointer;
-        text-align: center; transition: background 0.2s, color 0.2s;
+        display: block;
+        width: calc(100% - 32px);
+        margin: 18px 16px 8px;
+        padding: 13px;
+        background: var(--white);
+        color: var(--navy);
+        border: 2px solid var(--navy);
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 800;
+        cursor: pointer;
+        text-align: center;
+        transition:
+          background 0.2s,
+          color 0.2s;
         font-family: "Inter", Arial, sans-serif;
       }
-      .btn-print:hover { background: var(--navy); color: var(--white); }
-      .btn-ulang {
-        display: block; width: calc(100% - 32px); margin: 0 16px 24px; padding: 12px;
-        background: var(--white); color: var(--muted); border: 1.5px solid var(--border);
-        border-radius: 12px; font-size: 12.5px; cursor: pointer;
-        text-align: center; font-family: "Inter", Arial, sans-serif;
-        font-weight: 600; transition: border-color 0.2s;
+      .btn-print:hover {
+        background: var(--navy);
+        color: var(--white);
       }
-      .btn-ulang:hover { border-color: var(--muted); }
+      .btn-ulang {
+        display: block;
+        width: calc(100% - 32px);
+        margin: 0 16px 24px;
+        padding: 12px;
+        background: var(--white);
+        color: var(--muted);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        font-size: 12.5px;
+        cursor: pointer;
+        text-align: center;
+        font-family: "Inter", Arial, sans-serif;
+        font-weight: 600;
+        transition: border-color 0.2s;
+      }
+      .btn-ulang:hover {
+        border-color: var(--muted);
+      }
 
       /* === FOOTER === */
       .page-footer {
-        width: 100%; max-width: 480px; text-align: center;
-        padding: 18px 16px 24px; font-size: 10.5px; color: var(--muted); line-height: 1.7;
+        width: 100%;
+        max-width: 480px;
+        text-align: center;
+        padding: 18px 16px 24px;
+        font-size: 10.5px;
+        color: var(--muted);
+        line-height: 1.7;
       }
-      .page-footer strong { color: var(--navy); }
+      .page-footer strong {
+        color: var(--navy);
+      }
 
       @media print {
-        .btn-print, .btn-ulang, .hero-banner, .info-strip, .page-footer, #time-panel { display: none !important; }
-        .card { box-shadow: none; }
-        body { background: #fff; }
+        .btn-print,
+        .btn-ulang,
+        .hero-banner,
+        .info-strip,
+        .page-footer,
+        #time-panel {
+          display: none !important;
+        }
+        .card {
+          box-shadow: none;
+        }
+        body {
+          background: #fff;
+        }
       }
       @media (min-width: 480px) {
-        .hero-banner { padding: 36px 24px 28px; }
-        .hero-title { font-size: 30px; }
-        .card { padding: 32px 28px 36px; border-radius: 0; }
+        .hero-banner {
+          padding: 36px 24px 28px;
+        }
+        .hero-title {
+          font-size: 30px;
+        }
+        .card {
+          padding: 32px 28px 36px;
+          border-radius: 0;
+        }
+      }
+
+      /* === IBADAH SELECTOR === */
+      .ibadah-cards {
+        display: flex;
+        gap: 10px;
+        margin-top: 2px;
+      }
+      .ibadah-cards input[type="radio"] {
+        display: none;
+      }
+      .ibadah-card-label {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        border: 1.5px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 8px;
+        cursor: pointer;
+        background: var(--input-bg);
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+        text-align: center;
+      }
+      .ibadah-card-label:hover:not(.ibadah-disabled) {
+        border-color: var(--navy-mid);
+        background: #f0f4ff;
+      }
+      .ibadah-cards input[type="radio"]:checked + .ibadah-card-label {
+        border-color: var(--navy);
+        background: #e8eeff;
+        box-shadow: 0 0 0 3px rgba(26, 58, 110, 0.1);
+      }
+      .ibadah-disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        background: #f0f4ff;
+      }
+      .ibadah-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--navy);
+      }
+      .ibadah-sisa {
+        font-size: 10px;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .ibadah-penuh {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--red);
+      }
+      .quota-penuh-notice {
+        background: #fff0f0;
+        border: 1px solid #f5b8b8;
+        border-left: 4px solid var(--red);
+        border-radius: 10px;
+        padding: 10px 14px;
+        margin-top: 18px;
+        display: none;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .quota-penuh-notice p {
+        font-size: 11px;
+        color: #7a0000;
+        line-height: 1.5;
+        font-weight: 500;
       }
     </style>
   </head>
   <body>
-
     <!-- HERO BANNER -->
     <div class="hero-banner" style="max-width: 480px; width: 100%">
       <div class="hero-title">Cek Kesehatan<br /><span>Darah Anda</span></div>
-      <div class="hero-sub">Kenali kondisi tubuh sejak dini, hidup sehat, ibadah semakin berarti.</div>
+      <div class="hero-sub">
+        Kenali kondisi tubuh sejak dini, hidup sehat, ibadah semakin berarti.
+      </div>
       <div class="hero-badges">
-        <div class="badge"><div class="dot"></div>Kolesterol</div>
-        <div class="badge"><div class="dot"></div>Asam Urat</div>
-        <div class="badge"><div class="dot"></div>Gula Darah</div>
-        <div class="badge"><div class="dot"></div>Tensi</div>
+        <div class="badge">
+          <div class="dot"></div>
+          Kolesterol
+        </div>
+        <div class="badge">
+          <div class="dot"></div>
+          Asam Urat
+        </div>
+        <div class="badge">
+          <div class="dot"></div>
+          Gula Darah
+        </div>
+        <div class="badge">
+          <div class="dot"></div>
+          Tensi
+        </div>
       </div>
     </div>
 
@@ -354,7 +864,7 @@
     </div>
 
     <!-- TIME PANEL (countdown / open timer / closed) -->
-    <div id="time-panel" style="width:100%;max-width:480px;">
+    <div id="time-panel" style="width: 100%; max-width: 480px">
       <div class="countdown-box" id="countdown-box">
         <!-- diisi JS -->
       </div>
@@ -373,13 +883,22 @@
         </div>
         <div class="age-notice">
           <span>⚠️</span>
-          <p>Kegiatan ini <strong>hanya untuk jemaat 50 tahun ke atas.</strong> Pastikan data tanggal lahir Anda benar.</p>
+          <p>
+            Kegiatan ini
+            <strong>hanya untuk jemaat 50 tahun ke atas.</strong> Pastikan data
+            tanggal lahir Anda benar.
+          </p>
         </div>
 
         <label>Nama Lengkap *</label>
         <div class="field-group">
           <span class="field-icon">👤</span>
-          <input type="text" id="nama" placeholder="Masukkan nama lengkap" autocomplete="name" />
+          <input
+            type="text"
+            id="nama"
+            placeholder="Masukkan nama lengkap"
+            autocomplete="name"
+          />
         </div>
 
         <label>Jenis Kelamin *</label>
@@ -398,7 +917,13 @@
         <label>No KTP *</label>
         <div class="field-group">
           <span class="field-icon">🪪</span>
-          <input type="text" id="noKTP" placeholder="16 digit No KTP" maxlength="16" inputmode="numeric" />
+          <input
+            type="text"
+            id="noKTP"
+            placeholder="16 digit No KTP"
+            maxlength="16"
+            inputmode="numeric"
+          />
         </div>
         <div class="note">16 digit angka tanpa spasi</div>
 
@@ -414,17 +939,58 @@
         <label>Usia</label>
         <div class="field-group">
           <span class="field-icon">🔢</span>
-          <input type="number" id="usia" placeholder="Otomatis dari tanggal lahir" readonly />
+          <input
+            type="number"
+            id="usia"
+            placeholder="Otomatis dari tanggal lahir"
+            readonly
+          />
         </div>
         <div class="note">Terisi otomatis saat tanggal lahir dipilih</div>
 
         <label>No Telp *</label>
         <div class="field-group">
           <span class="field-icon">📱</span>
-          <input type="tel" id="noTelp" placeholder="Contoh: 08123456789" inputmode="tel" />
+          <input
+            type="tel"
+            id="noTelp"
+            placeholder="Contoh: 08123456789"
+            inputmode="tel"
+          />
         </div>
 
-        <button class="btn-submit" id="btnSubmit" onclick="kirimForm()">✅ &nbsp;Daftar Sekarang</button>
+        <hr class="form-divider" />
+        <div class="form-divider-label">Pilihan Ibadah</div>
+
+        <label>Ibadah *</label>
+        <div class="ibadah-cards">
+          <input type="radio" name="ibadah" id="ibadah2" value="2" />
+          <label class="ibadah-card-label" for="ibadah2" id="labelIbadah2">
+            <span class="ibadah-name">🙏 Ibadah 2</span>
+            <span class="ibadah-sisa" id="sisaIbadah2">Memuat...</span>
+          </label>
+
+          <input type="radio" name="ibadah" id="ibadah3" value="3" />
+          <label class="ibadah-card-label" for="ibadah3" id="labelIbadah3">
+            <span class="ibadah-name">🙏 Ibadah 3</span>
+            <span class="ibadah-sisa" id="sisaIbadah3">Memuat...</span>
+          </label>
+        </div>
+        <div class="note">
+          Pilih ibadah sesuai sesi kehadiran Anda (maks. 25 peserta per ibadah)
+        </div>
+
+        <div class="quota-penuh-notice" id="quotaPenuhNotice">
+          <span>🔒</span>
+          <p>
+            <strong>Semua quota ibadah sudah penuh.</strong> Pendaftaran tidak
+            dapat dilakukan saat ini. Terima kasih atas antusiasme Anda! 🙏
+          </p>
+        </div>
+
+        <button class="btn-submit" id="btnSubmit" onclick="kirimForm()">
+          ✅ &nbsp;Daftar Sekarang
+        </button>
         <div id="status"></div>
       </div>
 
@@ -434,7 +1000,9 @@
           <div class="tiket-logo">🎫</div>
           <h3>Tiket Pendaftaran</h3>
           <p>Tunjukkan QR Code ini saat check-in</p>
-          <div class="event-date-strip">📅 &nbsp;Minggu, 19 Juli 2026 · 13:00 WIB</div>
+          <div class="event-date-strip">
+            📅 &nbsp;Minggu, 19 Juli 2026 · 13:00 WIB
+          </div>
         </div>
         <div class="tiket-perf"><div class="tiket-perf-line"></div></div>
         <div class="tiket-body">
@@ -448,20 +1016,48 @@
             <p>📷 &nbsp;Scan QR Code untuk verifikasi</p>
           </div>
           <table>
-            <tr><td>Nama</td><td id="t-nama"></td></tr>
-            <tr><td>Jenis Kelamin</td><td id="t-jenisKelamin"></td></tr>
-            <tr><td>No KTP</td><td id="t-noKTP"></td></tr>
-            <tr><td>Tgl Lahir</td><td id="t-tglLahir"></td></tr>
-            <tr><td>Usia</td><td id="t-usia"></td></tr>
-            <tr><td>No Telp</td><td id="t-noTelp"></td></tr>
-            <tr><td>Tgl Daftar</td><td id="t-tglDaftar"></td></tr>
+            <tr>
+              <td>Nama</td>
+              <td id="t-nama"></td>
+            </tr>
+            <tr>
+              <td>Jenis Kelamin</td>
+              <td id="t-jenisKelamin"></td>
+            </tr>
+            <tr>
+              <td>No KTP</td>
+              <td id="t-noKTP"></td>
+            </tr>
+            <tr>
+              <td>Tgl Lahir</td>
+              <td id="t-tglLahir"></td>
+            </tr>
+            <tr>
+              <td>Usia</td>
+              <td id="t-usia"></td>
+            </tr>
+            <tr>
+              <td>No Telp</td>
+              <td id="t-noTelp"></td>
+            </tr>
+            <tr>
+              <td>Ibadah</td>
+              <td id="t-ibadah"></td>
+            </tr>
+            <tr>
+              <td>Tgl Daftar</td>
+              <td id="t-tglDaftar"></td>
+            </tr>
           </table>
         </div>
         <div class="tiket-perf"><div class="tiket-perf-line"></div></div>
         <div class="tiket-footer">
-          Tiket dibuat otomatis oleh sistem &nbsp;·&nbsp; <span>GBI Pasarkemis Rayon 3</span>
+          Tiket dibuat otomatis oleh sistem &nbsp;·&nbsp;
+          <span>GBI Pasarkemis Rayon 3</span>
         </div>
-        <button class="btn-print" onclick="downloadTiketGambar()">📥 &nbsp;Download Tiket</button>
+        <button class="btn-print" onclick="downloadTiketGambar()">
+          📥 &nbsp;Download Tiket
+        </button>
         <button class="btn-ulang" onclick="daftarLagi()">← Daftar Lagi</button>
       </div>
     </div>
@@ -478,46 +1074,82 @@
       //  KONFIGURASI WAKTU — sesuaikan di sini
       // ============================================================
       // Format: new Date('YYYY-MM-DDTHH:MM:SS+07:00')  ← WIB = UTC+7
-      const WAKTU_BUKA   = new Date('2026-06-28T00:00:00+07:00');  // Form mulai bisa diisi
-      const WAKTU_TUTUP  = new Date('2026-07-01T00:00:00+07:00');  // Form ditutup
+      const WAKTU_BUKA = new Date("2026-06-28T00:00:00+07:00"); // Form mulai bisa diisi
+      const WAKTU_TUTUP = new Date("2026-07-01T00:00:00+07:00"); // Form ditutup
       // ============================================================
 
-      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw1YkrVKGvEGQppR-kvV5En-xFRMTlFibZwZ8PiJVi0YhNM9eN6WHD6UrnAJy_LJsnS/exec";
+      const APPS_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbw1YkrVKGvEGQppR-kvV5En-xFRMTlFibZwZ8PiJVi0YhNM9eN6WHD6UrnAJy_LJsnS/exec";
 
-      function pad2(n) { return String(n).padStart(2, '0'); }
+      function pad2(n) {
+        return String(n).padStart(2, "0");
+      }
 
       function getState() {
         const now = new Date();
-        if (now < WAKTU_BUKA)  return 'waiting';
-        if (now <= WAKTU_TUTUP) return 'open';
-        return 'closed';
+        if (now < WAKTU_BUKA) return "waiting";
+        if (now <= WAKTU_TUTUP) return "open";
+        return "closed";
       }
 
       function formatTargetLabel(dt) {
-        const hari  = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'][dt.getDay()];
-        const tgl   = dt.getDate();
-        const bulan = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'][dt.getMonth()];
-        return hari + ', ' + tgl + ' ' + bulan + ' ' + dt.getFullYear() +
-               ' · ' + pad2(dt.getHours()) + ':' + pad2(dt.getMinutes()) + ' WIB';
+        const hari = [
+          "Minggu",
+          "Senin",
+          "Selasa",
+          "Rabu",
+          "Kamis",
+          "Jumat",
+          "Sabtu",
+        ][dt.getDay()];
+        const tgl = dt.getDate();
+        const bulan = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "Mei",
+          "Jun",
+          "Jul",
+          "Agu",
+          "Sep",
+          "Okt",
+          "Nov",
+          "Des",
+        ][dt.getMonth()];
+        return (
+          hari +
+          ", " +
+          tgl +
+          " " +
+          bulan +
+          " " +
+          dt.getFullYear() +
+          " · " +
+          pad2(dt.getHours()) +
+          ":" +
+          pad2(dt.getMinutes()) +
+          " WIB"
+        );
       }
 
       function renderPanel(state, secsLeft) {
-        const panel = document.getElementById('time-panel');
-        const box   = document.getElementById('countdown-box');
-        const formSection = document.getElementById('form-section');
-        panel.style.display = 'block';
+        const panel = document.getElementById("time-panel");
+        const box = document.getElementById("countdown-box");
+        const formSection = document.getElementById("form-section");
+        panel.style.display = "block";
 
-        if (state === 'waiting') {
+        if (state === "waiting") {
           // Form dikunci
-          formSection.classList.add('form-locked');
-          document.getElementById('btnSubmit').disabled = true;
+          formSection.classList.add("form-locked");
+          document.getElementById("btnSubmit").disabled = true;
 
           const d = Math.floor(secsLeft / 86400);
           const h = Math.floor((secsLeft % 86400) / 3600);
           const m = Math.floor((secsLeft % 3600) / 60);
           const s = secsLeft % 60;
 
-          box.className = 'countdown-box state-waiting';
+          box.className = "countdown-box state-waiting";
           box.innerHTML = `
             <div class="countdown-eyebrow">Pendaftaran belum dibuka</div>
             <div class="countdown-title">Form dibuka pada ${formatTargetLabel(WAKTU_BUKA)}</div>
@@ -529,23 +1161,23 @@
             </div>
             <div class="countdown-note">Silakan kembali saat waktu pendaftaran tiba 🙏</div>
           `;
-
-        } else if (state === 'open') {
-          formSection.classList.remove('form-locked');
-          document.getElementById('btnSubmit').disabled = false;
+        } else if (state === "open") {
+          formSection.classList.remove("form-locked");
+          document.getElementById("btnSubmit").disabled = false;
 
           const d2 = Math.floor(secsLeft / 86400);
           const h = Math.floor((secsLeft % 86400) / 3600);
           const m = Math.floor((secsLeft % 3600) / 60);
           const s = secsLeft % 60;
 
-          const sisaStr = d2 > 0
-            ? `${d2} hari ${pad2(h)} jam ${pad2(m)} menit ${pad2(s)} detik`
-            : h > 0
-            ? `${h} jam ${pad2(m)} menit ${pad2(s)} detik`
-            : `${m} menit ${pad2(s)} detik`;
+          const sisaStr =
+            d2 > 0
+              ? `${d2} hari ${pad2(h)} jam ${pad2(m)} menit ${pad2(s)} detik`
+              : h > 0
+                ? `${h} jam ${pad2(m)} menit ${pad2(s)} detik`
+                : `${m} menit ${pad2(s)} detik`;
 
-          box.className = 'countdown-box state-open';
+          box.className = "countdown-box state-open";
           box.innerHTML = `
             <div class="countdown-eyebrow">Pendaftaran sedang dibuka</div>
             <div class="countdown-title">Segera isi form di bawah ini!</div>
@@ -554,13 +1186,12 @@
               <span class="open-timer-text">Ditutup dalam <strong style="color:#f0c419">${sisaStr}</strong></span>
             </div>
           `;
-
         } else {
           // closed
-          formSection.classList.add('form-locked');
-          document.getElementById('btnSubmit').disabled = true;
+          formSection.classList.add("form-locked");
+          document.getElementById("btnSubmit").disabled = true;
 
-          box.className = 'countdown-box state-closed';
+          box.className = "countdown-box state-closed";
           box.innerHTML = `
             <div class="closed-icon">🔒</div>
             <div class="countdown-eyebrow">Pendaftaran telah ditutup</div>
@@ -571,13 +1202,77 @@
       }
 
       function tickClock() {
-        const now   = new Date();
+        const now = new Date();
         const state = getState();
         let secsLeft = 0;
-        if (state === 'waiting') secsLeft = Math.ceil((WAKTU_BUKA  - now) / 1000);
-        if (state === 'open')    secsLeft = Math.ceil((WAKTU_TUTUP - now) / 1000);
+        if (state === "waiting")
+          secsLeft = Math.ceil((WAKTU_BUKA - now) / 1000);
+        if (state === "open") secsLeft = Math.ceil((WAKTU_TUTUP - now) / 1000);
         renderPanel(state, secsLeft);
       }
+
+      // ============================================================
+      //  QUOTA IBADAH
+      // ============================================================
+      const QUOTA_MAX = 25;
+
+      async function cekQuotaIbadah() {
+        try {
+          const res = await fetch(APPS_SCRIPT_URL + "?action=quotaIbadah");
+          const data = await res.json();
+          if (data.status !== "ok") return;
+
+          const q2 = data.ibadah2;
+          const q3 = data.ibadah3;
+
+          // Update label sisa quota
+          const label2 = document.getElementById("labelIbadah2");
+          const label3 = document.getElementById("labelIbadah3");
+          const radio2 = document.getElementById("ibadah2");
+          const radio3 = document.getElementById("ibadah3");
+          const sisa2El = document.getElementById("sisaIbadah2");
+          const sisa3El = document.getElementById("sisaIbadah3");
+
+          if (q2.penuh) {
+            radio2.disabled = true;
+            label2.classList.add("ibadah-disabled");
+            sisa2El.className = "ibadah-penuh";
+            sisa2El.textContent = "Quota Penuh";
+          } else {
+            radio2.disabled = false;
+            label2.classList.remove("ibadah-disabled");
+            sisa2El.className = "ibadah-sisa";
+            sisa2El.textContent = "Sisa " + q2.sisa + " / " + data.quota;
+          }
+
+          if (q3.penuh) {
+            radio3.disabled = true;
+            label3.classList.add("ibadah-disabled");
+            sisa3El.className = "ibadah-penuh";
+            sisa3El.textContent = "Quota Penuh";
+          } else {
+            radio3.disabled = false;
+            label3.classList.remove("ibadah-disabled");
+            sisa3El.className = "ibadah-sisa";
+            sisa3El.textContent = "Sisa " + q3.sisa + " / " + data.quota;
+          }
+
+          // Semua quota penuh — blokir pendaftaran
+          const notice = document.getElementById("quotaPenuhNotice");
+          if (q2.penuh && q3.penuh) {
+            notice.style.display = "flex";
+            document.getElementById("btnSubmit").disabled = true;
+          } else {
+            notice.style.display = "none";
+          }
+        } catch (err) {
+          // Gagal load quota — biarkan form tetap bisa diisi
+          document.getElementById("sisaIbadah2").textContent = "";
+          document.getElementById("sisaIbadah3").textContent = "";
+        }
+      }
+
+      cekQuotaIbadah();
 
       tickClock();
       setInterval(tickClock, 1000);
@@ -586,98 +1281,148 @@
       //  FORM LOGIC
       // ============================================================
       function hitungUsia() {
-        const tglLahir = document.getElementById('tglLahir').value;
+        const tglLahir = document.getElementById("tglLahir").value;
         if (!tglLahir) return;
-        const today = new Date(), lahir = new Date(tglLahir);
+        const today = new Date(),
+          lahir = new Date(tglLahir);
         let usia = today.getFullYear() - lahir.getFullYear();
-        const sudah = today.getMonth() > lahir.getMonth() ||
-          (today.getMonth() === lahir.getMonth() && today.getDate() >= lahir.getDate());
+        const sudah =
+          today.getMonth() > lahir.getMonth() ||
+          (today.getMonth() === lahir.getMonth() &&
+            today.getDate() >= lahir.getDate());
         if (!sudah) usia--;
-        document.getElementById('usia').value = usia;
+        document.getElementById("usia").value = usia;
       }
 
       function kirimForm() {
-        if (getState() !== 'open') { alert('Pendaftaran belum/sudah tidak dibuka.'); return; }
-        const nama        = document.getElementById('nama').value.trim();
-        const jenisKelamin= document.getElementById('jenisKelamin').value;
-        const noKTP       = document.getElementById('noKTP').value.trim();
-        const tglLahir    = document.getElementById('tglLahir').value;
-        const usia        = parseInt(document.getElementById('usia').value);
-        const noTelp      = document.getElementById('noTelp').value.trim();
+        if (getState() !== "open") {
+          alert("Pendaftaran belum/sudah tidak dibuka.");
+          return;
+        }
+        const nama = document.getElementById("nama").value.trim();
+        const jenisKelamin = document.getElementById("jenisKelamin").value;
+        const noKTP = document.getElementById("noKTP").value.trim();
+        const tglLahir = document.getElementById("tglLahir").value;
+        const usia = parseInt(document.getElementById("usia").value);
+        const noTelp = document.getElementById("noTelp").value.trim();
+        const ibadahEl = document.querySelector('input[name="ibadah"]:checked');
+        const ibadah = ibadahEl ? ibadahEl.value : "";
 
-        if (!nama || !jenisKelamin || !noKTP || !tglLahir || !usia || !noTelp) { alert('Semua field wajib diisi!'); return; }
-        if (!/^\d{16}$/.test(noKTP)) { alert('No KTP harus 16 digit angka!'); return; }
-        if (new Date(tglLahir) > new Date()) { alert('Tanggal lahir tidak boleh di masa depan!'); return; }
-        if (usia < 50) { alert('Maaf, pendaftaran hanya untuk peserta berusia 50 tahun ke atas!'); return; }
+        if (
+          !nama ||
+          !jenisKelamin ||
+          !noKTP ||
+          !tglLahir ||
+          !usia ||
+          !noTelp ||
+          !ibadah
+        ) {
+          alert("Semua field wajib diisi, termasuk pilihan ibadah!");
+          return;
+        }
+        if (!/^\d{16}$/.test(noKTP)) {
+          alert("No KTP harus 16 digit angka!");
+          return;
+        }
+        if (new Date(tglLahir) > new Date()) {
+          alert("Tanggal lahir tidak boleh di masa depan!");
+          return;
+        }
+        if (usia < 50) {
+          alert(
+            "Maaf, pendaftaran hanya untuk peserta berusia 50 tahun ke atas!",
+          );
+          return;
+        }
 
-        const btn = document.getElementById('btnSubmit');
+        const btn = document.getElementById("btnSubmit");
         btn.disabled = true;
-        document.getElementById('status').textContent = '⏳ Sedang memproses...';
+        document.getElementById("status").textContent =
+          "⏳ Sedang memproses...";
 
         fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          body: JSON.stringify({ nama, jenisKelamin, noKTP, tglLahir, usia, noTelp })
+          method: "POST",
+          body: JSON.stringify({
+            nama,
+            jenisKelamin,
+            noKTP,
+            tglLahir,
+            usia,
+            noTelp,
+            ibadah,
+          }),
         })
-          .then(r => r.json())
-          .then(hasil => {
-            if (hasil.status === 'error') {
-              alert('Error: ' + hasil.pesan);
+          .then((r) => r.json())
+          .then((hasil) => {
+            if (hasil.status === "error") {
+              alert("Error: " + hasil.pesan);
               btn.disabled = false;
-              document.getElementById('status').textContent = '';
+              document.getElementById("status").textContent = "";
               return;
             }
             tampilTiket(hasil);
           })
-          .catch(err => {
-            alert('Gagal terhubung ke server: ' + err.message);
+          .catch((err) => {
+            alert("Gagal terhubung ke server: " + err.message);
             btn.disabled = false;
-            document.getElementById('status').textContent = '';
+            document.getElementById("status").textContent = "";
           });
       }
 
       function tampilTiket(t) {
-        document.getElementById('t-noUrut').textContent     = '#' + t.noUrut;
-        document.getElementById('t-qr').src                 = t.qrURL;
-        document.getElementById('t-nama').textContent       = t.nama;
-        document.getElementById('t-jenisKelamin').textContent = t.jenisKelamin;
-        document.getElementById('t-noKTP').textContent      = t.noKTP;
-        document.getElementById('t-tglLahir').textContent   = t.tglLahir;
-        document.getElementById('t-usia').textContent       = t.usia + ' tahun';
-        document.getElementById('t-noTelp').textContent     = t.noTelp;
-        document.getElementById('t-tglDaftar').textContent  = t.tglDaftar;
-        document.getElementById('form-section').style.display = 'none';
-        document.getElementById('tiket').style.display = 'block';
+        document.getElementById("t-noUrut").textContent = "#" + t.noUrut;
+        document.getElementById("t-qr").src = t.qrURL;
+        document.getElementById("t-nama").textContent = t.nama;
+        document.getElementById("t-jenisKelamin").textContent = t.jenisKelamin;
+        document.getElementById("t-noKTP").textContent = t.noKTP;
+        document.getElementById("t-tglLahir").textContent = t.tglLahir;
+        document.getElementById("t-usia").textContent = t.usia + " tahun";
+        document.getElementById("t-noTelp").textContent = t.noTelp;
+        document.getElementById("t-ibadah").textContent = "Ibadah " + t.ibadah;
+        document.getElementById("t-tglDaftar").textContent = t.tglDaftar;
+        document.getElementById("form-section").style.display = "none";
+        document.getElementById("tiket").style.display = "block";
         window.scrollTo(0, 0);
+        cekQuotaIbadah();
       }
 
       function daftarLagi() {
-        document.getElementById('form-section').style.display = 'block';
-        document.getElementById('tiket').style.display = 'none';
-        document.getElementById('status').textContent = '';
-        document.querySelectorAll('input').forEach(i => i.value = '');
-        document.getElementById('jenisKelamin').value = '';
+        document.getElementById("form-section").style.display = "block";
+        document.getElementById("tiket").style.display = "none";
+        document.getElementById("status").textContent = "";
+        document.querySelectorAll("input").forEach((i) => (i.value = ""));
+        document.getElementById("jenisKelamin").value = "";
+        document
+          .querySelectorAll('input[name="ibadah"]')
+          .forEach((r) => (r.checked = false));
         tickClock();
         window.scrollTo(0, 0);
       }
 
       function downloadTiketGambar() {
-        const tiketEl = document.getElementById('tiket');
-        const btn1 = tiketEl.querySelector('.btn-print');
-        const btn2 = tiketEl.querySelector('.btn-ulang');
-        btn1.style.display = 'none';
-        btn2.style.display = 'none';
-        html2canvas(tiketEl, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
-          const link = document.createElement('a');
-          link.download = 'tiket-cek-kesehatan.png';
-          link.href = canvas.toDataURL('image/png');
-          link.click();
-          btn1.style.display = '';
-          btn2.style.display = '';
-        }).catch(err => {
-          alert('Gagal membuat gambar: ' + err.message);
-          btn1.style.display = '';
-          btn2.style.display = '';
-        });
+        const tiketEl = document.getElementById("tiket");
+        const btn1 = tiketEl.querySelector(".btn-print");
+        const btn2 = tiketEl.querySelector(".btn-ulang");
+        btn1.style.display = "none";
+        btn2.style.display = "none";
+        html2canvas(tiketEl, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+        })
+          .then((canvas) => {
+            const link = document.createElement("a");
+            link.download = "tiket-cek-kesehatan.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+            btn1.style.display = "";
+            btn2.style.display = "";
+          })
+          .catch((err) => {
+            alert("Gagal membuat gambar: " + err.message);
+            btn1.style.display = "";
+            btn2.style.display = "";
+          });
       }
     </script>
   </body>
