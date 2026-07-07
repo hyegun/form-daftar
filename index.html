@@ -767,7 +767,7 @@
         if (!nama || !jenisKelamin || !noKTP || !tglLahir || !usia || !noTelp || !ibadah) { alert('Semua field wajib diisi, termasuk pilihan ibadah!'); return; }
         if (!/^\d{16}$/.test(noKTP)) { alert('No KTP harus 16 digit angka!'); return; }
         if (new Date(tglLahir) > new Date()) { alert('Tanggal lahir tidak boleh di masa depan!'); return; }
-        if (usia < 50) { alert('Maaf, pendaftaran hanya untuk peserta berusia 50 tahun ke atas!'); return; }
+        //if (usia < 50) { alert('Maaf, pendaftaran hanya untuk peserta berusia 50 tahun ke atas!'); return; }
 
         const btn = document.getElementById('btnSubmit');
         btn.disabled = true;
