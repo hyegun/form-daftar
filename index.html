@@ -566,6 +566,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
     <script>
       // ============================================================
       //  KONFIGURASI WAKTU — sesuaikan di sini
@@ -576,9 +577,17 @@
       // ============================================================
 
       const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw1YkrVKGvEGQppR-kvV5En-xFRMTlFibZwZ8PiJVi0YhNM9eN6WHD6UrnAJy_LJsnS/exec";
-
+      
       function pad2(n) { return String(n).padStart(2, '0'); }
 
+      function normalisasiNoTelp(no) {
+          no = no.trim().replace(/[\s\-\(\)]/g, ''); // hapus spasi, strip, kurung
+          if (no.startsWith('+62')) return no;
+          if (no.startsWith('62')) return '+' + no;
+          if (no.startsWith('0')) return '+62' + no.slice(1);
+          return '+62' + no; // fallback kalau user input tanpa 0 di depan
+        }
+      
       function getState() {
         const now = new Date();
         if (now < WAKTU_BUKA)  return 'waiting';
@@ -760,7 +769,7 @@
         const noKTP       = document.getElementById('noKTP').value.trim();
         const tglLahir    = document.getElementById('tglLahir').value;
         const usia        = parseInt(document.getElementById('usia').value);
-        const noTelp      = document.getElementById('noTelp').value.trim();
+        const noTelp      = normalisasiNoTelp(document.getElementById('noTelp').value.trim());
         const ibadahEl    = document.querySelector('input[name="ibadah"]:checked');
         const ibadah      = ibadahEl ? ibadahEl.value : '';
 
